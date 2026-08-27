@@ -7,9 +7,9 @@ import (
 	"strconv"
 	"time"
 
-	logConfig "github.com/hecc-blot/framework/config/log"
-	logContract "github.com/hecc-blot/framework/contract/log"
-	"github.com/hecc-blot/framework/util"
+	logConfig "github.com/hecc-blot/core/config/log"
+	logContract "github.com/hecc-blot/core/contract/log"
+	"github.com/hecc-blot/core/util"
 
 	sls "github.com/aliyun/aliyun-log-go-sdk"
 )

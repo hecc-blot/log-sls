@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	logConfig "github.com/hecc-blot/framework/config/log"
-	"github.com/hecc-blot/framework/enum/trace"
+	logConfig "github.com/hecc-blot/core/config/log"
+	"github.com/hecc-blot/core/enum/trace"
 
 	"github.com/stretchr/testify/assert"
 )
