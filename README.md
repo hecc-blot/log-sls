@@ -1,6 +1,6 @@
 # hecc-blot-log-sls
 
-阿里云日志服务（SLS）日志后端：实现 framework 的 `ILog` 契约，与本地日志二选一接入。
+阿里云日志服务（SLS）日志后端：实现 core 的 `ILog` 契约，与本地日志二选一接入。
 
 ## 安装
 
@@ -10,14 +10,14 @@ go get github.com/hecc-blot/log-sls
 
 ## 说明
 
-本模块依赖 [framework](https://github.com/hecc-blot/framework) 的日志契约（`framework/contract/log`）与配置类型（`framework/config/log`），实现 `ILog` 接口将日志写入阿里云 SLS。
+本模块依赖 [core](https://github.com/hecc-blot/core) 的日志契约（`core/contract/log`）与配置类型（`core/config/log`），实现 `ILog` 接口将日志写入阿里云 SLS。
 
 ## 接口契约
 
-实现的是 framework 定义的 `ILog`：
+实现的是 core 定义的 `ILog`：
 
 ```go
-// github.com/hecc-blot/framework/contract/log
+// github.com/hecc-blot/core/contract/log
 type ILog interface {
     Debug(ctx context.Context, msg string, fields ...interface{})
     Info(ctx context.Context, msg string, fields ...interface{})
@@ -30,7 +30,7 @@ type ILog interface {
 
 ```go
 import (
-    logContract "github.com/hecc-blot/framework/contract/log"
+    logContract "github.com/hecc-blot/core/contract/log"
     logsls "github.com/hecc-blot/log-sls/service"
 )
 
@@ -68,7 +68,7 @@ log:
 
 ## 与本地日志的关系
 
-本地日志（framework `service/log`，Zap + lumberjack 文件滚动）与 SLS 日志**二选一**，通过 `enable` 配置启用。组装层按需选择：
+本地日志（core `service/log`，Zap + lumberjack 文件滚动）与 SLS 日志**二选一**，通过 `enable` 配置启用。组装层按需选择：
 
 ```go
 var logSvc logContract.ILog
@@ -99,5 +99,5 @@ func (a AddApi) Call(ctx *gin.Context) (interface{}, iCoreError.IError) {
 
 | 模块 | 说明 |
 |------|------|
-| [framework](https://github.com/hecc-blot/framework) | `ILog` 契约、`SlsConfig` 配置类型、本地日志 |
+| [core](https://github.com/hecc-blot/core) | `ILog` 契约、`SlsConfig` 配置类型、本地日志 |
 | [trace](https://github.com/hecc-blot/trace) | TraceId 与日志关联 |
