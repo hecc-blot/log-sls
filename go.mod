@@ -4,7 +4,7 @@ go 1.26.1
 
 require (
 	github.com/aliyun/aliyun-log-go-sdk v0.1.126
-	github.com/hecc-blot/core v0.1.4
+	github.com/hecc-blot/core v0.1.5
 	github.com/stretchr/testify v1.12.1
 )
 

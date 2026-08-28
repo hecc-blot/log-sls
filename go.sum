@@ -41,8 +41,8 @@ github.com/golang/protobuf v1.5.4 h1:i7eJL8qZTpSEXOPTxNKhASYpMn+8e5Q6AdndVa1dWek
 github.com/golang/protobuf v1.5.4/go.mod h1:lnTiLA8Wa4RWRcIUkrtSVa5nRhsEGBg48fD6rSs7xps=
 github.com/google/go-cmp v0.7.0 h1:wk8382ETsv4JYUZwIsn6YpYiWiBsYLSJiTsyBybVuN8=
 github.com/google/go-cmp v0.7.0/go.mod h1:pXiqmnSA92OHEEa9HXL2W4E7lf9JzCmGVUdgjX3N/iU=
-github.com/hecc-blot/core v0.1.4 h1:FPKkhiwxxOBbwk+whpUwh1wDrW3ql3NQM2v+naooXlw=
-github.com/hecc-blot/core v0.1.4/go.mod h1:Nlw9oi5mvVJSjkE9LXCnGTTXgOTvYKdREYrEddoVXVE=
+github.com/hecc-blot/core v0.1.5 h1:EQ4FNzqLplMcgAzYGStowrtW6ukeOT/4Dt1VwM4T/cQ=
+github.com/hecc-blot/core v0.1.5/go.mod h1:Nlw9oi5mvVJSjkE9LXCnGTTXgOTvYKdREYrEddoVXVE=
 github.com/jarcoal/httpmock v1.4.0 h1:BvhqnH0JAYbNudL2GMJKgOHe2CtKlzJ/5rWKyp+hc2k=
 github.com/jarcoal/httpmock v1.4.0/go.mod h1:ftW1xULwo+j0R0JJkJIIi7UKigZUXCLLanykgjwBXL0=
 github.com/json-iterator/go v1.1.12 h1:PV8peI4a0ysnczrg+LtxykD8LfKY9ML6u2jnxaEnrnM=

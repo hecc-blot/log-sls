@@ -10,7 +10,7 @@ go get github.com/hecc-blot/log-sls
 
 ## 说明
 
-本模块依赖 [core](https://github.com/hecc-blot/core) 的日志契约（`core/contract/log`）与配置类型（`core/config/log`），实现 `ILog` 接口将日志写入阿里云 SLS。
+本模块依赖 [core](https://github.com/hecc-blot/core) 的日志契约（`core/contract/log`），实现 `ILog` 接口将日志写入阿里云 SLS；SLS 配置类型（`SlsConfig`）定义在本模块的 `config` 包。
 
 ## 接口契约
 
@@ -47,7 +47,6 @@ container.Set(new(logContract.ILog), logSvc)
 ```yaml
 log:
   sls:
-    enable: true
     endpoint: "cn-hangzhou.log.aliyuncs.com"
     access_key: "your-access-key"
     secret_key: "your-secret"
@@ -58,7 +57,6 @@ log:
 
 | 配置项 | 类型 | 说明 |
 |--------|------|------|
-| `enable` | bool | 是否启用 |
 | `endpoint` | string | SLS 端点地址 |
 | `access_key` | string | 阿里云 AccessKey |
 | `secret_key` | string | 阿里云 SecretKey |
@@ -68,15 +66,12 @@ log:
 
 ## 与本地日志的关系
 
-本地日志（core `service/log`，Zap + lumberjack 文件滚动）与 SLS 日志**二选一**，通过 `enable` 配置启用。组装层按需选择：
+本地日志（core `service/log`，Zap + lumberjack 文件滚动）与 SLS 日志**二选一**，业务方按需显式指定构造哪一个，不做 `enable` 自动切换：
 
 ```go
-var logSvc logContract.ILog
-if config.Log.Sls.Enable {
-    logSvc = must(logsls.NewLogger(&config.Log.Sls))   // 优先 SLS
-} else {
-    logSvc = must(log.NewLogger(&config.Log.Local))    // 本地日志
-}
+logSvc, err := log.NewLogger(&config.Log.Local)    // 本地日志
+// 或
+logSvc, err := logsls.NewLogger(&config.Log.Sls)   // SLS 日志
 ```
 
 ## 使用
@@ -99,5 +94,5 @@ func (a AddApi) Call(ctx *gin.Context) (interface{}, iCoreError.IError) {
 
 | 模块 | 说明 |
 |------|------|
-| [core](https://github.com/hecc-blot/core) | `ILog` 契约、`SlsConfig` 配置类型、本地日志 |
+| [core](https://github.com/hecc-blot/core) | `ILog` 契约、本地日志 |
 | [trace](https://github.com/hecc-blot/trace) | TraceId 与日志关联 |

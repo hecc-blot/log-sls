@@ -4,14 +4,13 @@ import (
 	"context"
 	"testing"
 
-	logConfig "github.com/hecc-blot/core/config/log"
 	"github.com/hecc-blot/core/enum/trace"
+	slsConfig "github.com/hecc-blot/log-sls/config"
 
 	"github.com/stretchr/testify/assert"
 )
 
-var conf = &logConfig.SlsConfig{
-	Enable:      true,
+var conf = &slsConfig.SlsConfig{
 	Endpoint:    "cn-hangzhou.log.aliyuncs.com",
 	AccessKey:   "",
 	SecretKey:   "",

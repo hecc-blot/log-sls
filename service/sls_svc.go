@@ -7,9 +7,9 @@ import (
 	"strconv"
 	"time"
 
-	logConfig "github.com/hecc-blot/core/config/log"
 	logContract "github.com/hecc-blot/core/contract/log"
 	"github.com/hecc-blot/core/util"
+	slsConfig "github.com/hecc-blot/log-sls/config"
 
 	sls "github.com/aliyun/aliyun-log-go-sdk"
 )
@@ -83,8 +83,8 @@ func newLogContent(key, value string) *sls.LogContent {
 	}
 }
 
-// NewLogger 创建 SLS 日志服务（log-sls 是 framework 默认 logger 的加强后端）。
-func NewLogger(conf *logConfig.SlsConfig) (logContract.ILog, error) {
+// NewLogger 创建 SLS 日志服务（阿里云 SLS 后端，实现 core 的 ILog 契约）。
+func NewLogger(conf *slsConfig.SlsConfig) (logContract.ILog, error) {
 	provider := sls.NewStaticCredentialsProvider(conf.AccessKey, conf.SecretKey, conf.SecretToken)
 	client := sls.CreateNormalInterfaceV2(conf.Endpoint, provider)
 
